@@ -1,0 +1,93 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+!.env.example
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# accounts data
+/accounts/*
+!/accounts/*.example.json
+
+# batch result files
+*.tsv
+
+
+# 일회성 디버그/탐색 스크립트 — 로컬에는 남기고 저장소에는 올리지 않는다
+/_tmp-*
+/debug-*.ts
+/check-orders.ts
+/check-qna.ts
+/check-reviews.ts
+/write-sheet.ts
+/write-review-action.ts
+/test-image-upload.ts
+/run-qna-3.ts
+/run-qna-reply-6.ts
+/run-qna-reply-batch-v2.ts
+/run-purchase-new2.ts
+/scripts/explore-*
+/scripts/test-*
+/scripts/retry-*
+/scripts/inspect*
+/scripts/debug-*
+/scripts/pick-qna.js
+/scripts/open-browser-test.ts
+/scripts/screenshot-page.ts
+/scripts/check-page-load.ts
+
+# 실행 중 생성되는 스크린샷과 산출물
+/*.png
+/scripts/*.png
+/review-*.txt
+/logs/
+/tmp/
+
+
+
+
+# 리뷰 원본 이미지 (용량이 커서 저장소 밖에서 관리)
+/한려담원_리뷰사진/
+
+# 이미지 바이너리는 추적하지 않는다
+# 한글 디렉터리명은 인코딩 차이로 경로 패턴이 빗나갈 수 있어 확장자로도 막는다
+*.jpg
+*.jpeg
+*.webp
+*.gif

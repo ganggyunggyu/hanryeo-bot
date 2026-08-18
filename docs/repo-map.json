@@ -1,0 +1,1584 @@
+{
+  "name": "hanryeo-bot",
+  "generatedBy": "scripts/repo-parser",
+  "packageManager": "pnpm",
+  "runtime": "node >=22 (native TypeScript execution)",
+  "packageScripts": {
+    "dev": "next dev --port 5522",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "sheet:review-highlight": "node scripts/setup-review-written-highlight.ts",
+    "repo:parse": "node scripts/repo-parser/index.ts",
+    "repo:check": "node scripts/repo-parser/index.ts --check",
+    "setup:check": "node scripts/check-setup/index.ts",
+    "setup:ask": "node scripts/check-setup/index.ts --ask"
+  },
+  "dependencies": {
+    "2captcha-ts": "^2.4.1",
+    "clsx": "^2.1.1",
+    "dotenv": "^17.3.1",
+    "googleapis": "^171.4.0",
+    "next": "16.1.6",
+    "playwright": "^1.58.1",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "tailwind-merge": "^3.4.0"
+  },
+  "entrypoints": [
+    {
+      "path": "check-qna-sheet.ts",
+      "group": "root",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx check-qna-sheet.ts",
+      "internalImports": [],
+      "packageImports": [
+        "dotenv",
+        "googleapis"
+      ],
+      "envKeys": [
+        "GOOGLE_PRIVATE_KEY",
+        "GOOGLE_SERVICE_ACCOUNT_EMAIL"
+      ],
+      "dataFiles": [],
+      "hosts": [
+        "www.googleapis.com"
+      ],
+      "secrets": [],
+      "lines": 27
+    },
+    {
+      "path": "check-sheet.ts",
+      "group": "root",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx check-sheet.ts",
+      "internalImports": [],
+      "packageImports": [
+        "dotenv",
+        "googleapis"
+      ],
+      "envKeys": [
+        "GOOGLE_PRIVATE_KEY",
+        "GOOGLE_SERVICE_ACCOUNT_EMAIL",
+        "GOOGLE_SHEET_ID"
+      ],
+      "dataFiles": [],
+      "hosts": [
+        "www.googleapis.com"
+      ],
+      "secrets": [],
+      "lines": 24
+    },
+    {
+      "path": "create-qna-tab.ts",
+      "group": "root",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx create-qna-tab.ts",
+      "internalImports": [],
+      "packageImports": [
+        "dotenv",
+        "googleapis"
+      ],
+      "envKeys": [
+        "GOOGLE_PRIVATE_KEY",
+        "GOOGLE_SERVICE_ACCOUNT_EMAIL"
+      ],
+      "dataFiles": [],
+      "hosts": [
+        "www.googleapis.com"
+      ],
+      "secrets": [],
+      "lines": 34
+    },
+    {
+      "path": "read-sheet.ts",
+      "group": "root",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx read-sheet.ts",
+      "internalImports": [],
+      "packageImports": [
+        "dotenv",
+        "googleapis"
+      ],
+      "envKeys": [
+        "GOOGLE_PRIVATE_KEY",
+        "GOOGLE_SERVICE_ACCOUNT_EMAIL",
+        "GOOGLE_SHEET_ID"
+      ],
+      "dataFiles": [],
+      "hosts": [
+        "www.googleapis.com"
+      ],
+      "secrets": [],
+      "lines": 42
+    },
+    {
+      "path": "run-batch-custom.ts",
+      "group": "root",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx run-batch-custom.ts",
+      "internalImports": [
+        "src/shared/config/contact",
+        "src/shared/config/credentials"
+      ],
+      "packageImports": [
+        "fs",
+        "path",
+        "playwright"
+      ],
+      "envKeys": [
+        "HEADLESS"
+      ],
+      "dataFiles": [
+        "accounts/completed-accounts.json",
+        "accounts/custom-targets.json"
+      ],
+      "hosts": [
+        "hanryeodamwon.com"
+      ],
+      "secrets": [],
+      "lines": 272
+    },
+    {
+      "path": "run-batch.ts",
+      "group": "root",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx run-batch.ts",
+      "internalImports": [
+        "src/shared/config/credentials"
+      ],
+      "packageImports": [
+        "fs",
+        "path",
+        "playwright"
+      ],
+      "envKeys": [
+        "HEADLESS"
+      ],
+      "dataFiles": [
+        "accounts/completed-accounts.json"
+      ],
+      "hosts": [
+        "hanryeodamwon.com"
+      ],
+      "secrets": [],
+      "lines": 324
+    },
+    {
+      "path": "run-daily-pipeline.ts",
+      "group": "root",
+      "summary": "한려담원 일일 파이프라인 계정 생성 → 구매 → 구글 시트 기록",
+      "usage": [
+        "npx tsx run-daily-pipeline.ts              # 1개 신규 계정",
+        "npx tsx run-daily-pipeline.ts 3            # 3개 신규 계정",
+        "npx tsx run-daily-pipeline.ts jiyoung4433  # 기존 계정 구매"
+      ],
+      "runCommand": "pnpm tsx run-daily-pipeline.ts",
+      "internalImports": [
+        "src/shared/config/contact",
+        "src/shared/config/credentials"
+      ],
+      "packageImports": [
+        "dotenv",
+        "fs",
+        "googleapis",
+        "path",
+        "playwright"
+      ],
+      "envKeys": [
+        "GOOGLE_PRIVATE_KEY",
+        "GOOGLE_SERVICE_ACCOUNT_EMAIL",
+        "GOOGLE_SHEET_ID"
+      ],
+      "dataFiles": [
+        "accounts/completed-accounts.json"
+      ],
+      "hosts": [
+        "hanryeodamwon.com",
+        "www.googleapis.com"
+      ],
+      "secrets": [
+        {
+          "line": 149,
+          "kind": "address",
+          "severity": "low",
+          "preview": "대구*******"
+        },
+        {
+          "line": 150,
+          "kind": "address",
+          "severity": "low",
+          "preview": "인천********"
+        },
+        {
+          "line": 151,
+          "kind": "address",
+          "severity": "low",
+          "preview": "광주********"
+        },
+        {
+          "line": 152,
+          "kind": "address",
+          "severity": "low",
+          "preview": "서울********"
+        },
+        {
+          "line": 153,
+          "kind": "address",
+          "severity": "low",
+          "preview": "서울********"
+        },
+        {
+          "line": 154,
+          "kind": "address",
+          "severity": "low",
+          "preview": "경기********"
+        },
+        {
+          "line": 155,
+          "kind": "address",
+          "severity": "low",
+          "preview": "서울********"
+        }
+      ],
+      "lines": 552
+    },
+    {
+      "path": "run-join-3.ts",
+      "group": "root",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx run-join-3.ts",
+      "internalImports": [
+        "src/shared/config/credentials"
+      ],
+      "packageImports": [
+        "fs",
+        "path",
+        "playwright"
+      ],
+      "envKeys": [],
+      "dataFiles": [
+        "accounts/completed-accounts.json"
+      ],
+      "hosts": [
+        "hanryeodamwon.com"
+      ],
+      "secrets": [],
+      "lines": 184
+    },
+    {
+      "path": "run-purchase-and-sheet.ts",
+      "group": "root",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx run-purchase-and-sheet.ts",
+      "internalImports": [
+        "src/shared/config/credentials"
+      ],
+      "packageImports": [
+        "dotenv",
+        "fs",
+        "googleapis",
+        "path",
+        "playwright"
+      ],
+      "envKeys": [
+        "GOOGLE_PRIVATE_KEY",
+        "GOOGLE_SERVICE_ACCOUNT_EMAIL",
+        "GOOGLE_SHEET_ID"
+      ],
+      "dataFiles": [
+        "accounts/completed-accounts.json"
+      ],
+      "hosts": [
+        "hanryeodamwon.com",
+        "www.googleapis.com"
+      ],
+      "secrets": [],
+      "lines": 273
+    },
+    {
+      "path": "run-purchase-only.ts",
+      "group": "root",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx run-purchase-only.ts",
+      "internalImports": [
+        "src/shared/config/credentials"
+      ],
+      "packageImports": [
+        "fs",
+        "path",
+        "playwright"
+      ],
+      "envKeys": [
+        "HEADLESS"
+      ],
+      "dataFiles": [
+        "accounts/completed-accounts.json"
+      ],
+      "hosts": [
+        "hanryeodamwon.com"
+      ],
+      "secrets": [],
+      "lines": 213
+    },
+    {
+      "path": "run-qna-batch.ts",
+      "group": "root",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx run-qna-batch.ts",
+      "internalImports": [
+        "src/features/auth/lib/login-action",
+        "src/features/qna/lib/write-qna-action",
+        "src/types/automation"
+      ],
+      "packageImports": [
+        "fs",
+        "path",
+        "playwright"
+      ],
+      "envKeys": [
+        "BATCH_SIZE",
+        "CAPTCHA_API_KEY",
+        "HEADLESS",
+        "MAX_DELAY",
+        "MIN_DELAY"
+      ],
+      "dataFiles": [
+        "accounts/completed-accounts.json"
+      ],
+      "hosts": [
+        "hanryeodamwon.com"
+      ],
+      "secrets": [],
+      "lines": 129
+    },
+    {
+      "path": "run-qna-reply-batch.ts",
+      "group": "root",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx run-qna-reply-batch.ts",
+      "internalImports": [
+        "src/features/auth/lib/admin-login-action",
+        "src/features/qna/lib/qna-reply-templates",
+        "src/features/qna/lib/write-qna-reply-action",
+        "src/shared/config/credentials",
+        "src/types/automation"
+      ],
+      "packageImports": [
+        "playwright"
+      ],
+      "envKeys": [],
+      "dataFiles": [],
+      "hosts": [
+        "hanryeodamwon.cafe24.com"
+      ],
+      "secrets": [],
+      "lines": 131
+    },
+    {
+      "path": "run-qna-write-and-reply.ts",
+      "group": "root",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx run-qna-write-and-reply.ts",
+      "internalImports": [
+        "src/features/auth/lib/admin-login-action",
+        "src/features/auth/lib/login-action",
+        "src/features/qna/lib/qna-reply-templates",
+        "src/features/qna/lib/write-qna-action",
+        "src/features/qna/lib/write-qna-reply-action",
+        "src/shared/config/credentials",
+        "src/types/automation"
+      ],
+      "packageImports": [
+        "fs",
+        "path",
+        "playwright"
+      ],
+      "envKeys": [
+        "CAPTCHA_API_KEY"
+      ],
+      "dataFiles": [
+        "accounts/completed-accounts.json"
+      ],
+      "hosts": [
+        "hanryeodamwon.cafe24.com",
+        "hanryeodamwon.com"
+      ],
+      "secrets": [],
+      "lines": 288
+    },
+    {
+      "path": "run-review-batch.ts",
+      "group": "root",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx run-review-batch.ts",
+      "internalImports": [
+        "src/features/auth/lib/login-action",
+        "src/features/product/lib/visit-product-action",
+        "src/features/review/lib/write-review-action",
+        "src/types/automation"
+      ],
+      "packageImports": [
+        "fs",
+        "path",
+        "playwright"
+      ],
+      "envKeys": [
+        "BATCH_SIZE",
+        "HEADLESS",
+        "MAX_DELAY",
+        "MIN_DELAY",
+        "TARGET_SUCCESS"
+      ],
+      "dataFiles": [
+        "accounts/completed-accounts.json"
+      ],
+      "hosts": [
+        "hanryeodamwon.com"
+      ],
+      "secrets": [],
+      "lines": 143
+    },
+    {
+      "path": "run-review-image-batch.ts",
+      "group": "root",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx run-review-image-batch.ts",
+      "internalImports": [
+        "src/features/auth/lib/login-action",
+        "src/features/product/lib/visit-product-action",
+        "src/features/review/lib/write-review-action",
+        "src/types/automation"
+      ],
+      "packageImports": [
+        "fs",
+        "path",
+        "playwright"
+      ],
+      "envKeys": [],
+      "dataFiles": [
+        "accounts/completed-accounts.json"
+      ],
+      "hosts": [
+        "hanryeodamwon.com"
+      ],
+      "secrets": [],
+      "lines": 175
+    },
+    {
+      "path": "scripts/check-news-refs.ts",
+      "group": "scripts",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx scripts/check-news-refs.ts",
+      "internalImports": [],
+      "packageImports": [
+        "dotenv",
+        "googleapis"
+      ],
+      "envKeys": [
+        "GOOGLE_PRIVATE_KEY",
+        "GOOGLE_SERVICE_ACCOUNT_EMAIL"
+      ],
+      "dataFiles": [],
+      "hosts": [
+        "www.googleapis.com"
+      ],
+      "secrets": [],
+      "lines": 49
+    },
+    {
+      "path": "scripts/check-qna-html.ts",
+      "group": "scripts",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx scripts/check-qna-html.ts",
+      "internalImports": [
+        "../src/features/auth/lib/admin-login-action",
+        "../src/shared/config/credentials",
+        "../src/types/automation"
+      ],
+      "packageImports": [
+        "playwright"
+      ],
+      "envKeys": [],
+      "dataFiles": [],
+      "hosts": [
+        "hanryeodamwon.cafe24.com"
+      ],
+      "secrets": [],
+      "lines": 89
+    },
+    {
+      "path": "scripts/check-review-sheet.ts",
+      "group": "scripts",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx scripts/check-review-sheet.ts",
+      "internalImports": [],
+      "packageImports": [
+        "dotenv",
+        "googleapis"
+      ],
+      "envKeys": [
+        "GOOGLE_PRIVATE_KEY",
+        "GOOGLE_SERVICE_ACCOUNT_EMAIL"
+      ],
+      "dataFiles": [],
+      "hosts": [
+        "www.googleapis.com"
+      ],
+      "secrets": [],
+      "lines": 47
+    },
+    {
+      "path": "scripts/check-setup/index.ts",
+      "group": "scripts",
+      "summary": "환경 점검 실행에 필요한 런타임, 환경변수, 데이터 파일이 준비됐는지 확인하고 빠진 것마다 해결 방법을 알려준다.",
+      "usage": [
+        "node scripts/check-setup/index.ts                  # 전체 점검",
+        "node scripts/check-setup/index.ts --task=review    # 특정 작업에 필요한 것만",
+        "node scripts/check-setup/index.ts --ask            # 사용자에게 물어볼 문항 출력"
+      ],
+      "runCommand": "pnpm tsx scripts/check-setup/index.ts",
+      "internalImports": [
+        "check-data",
+        "check-env",
+        "check-runtime",
+        "render-report",
+        "requirements",
+        "types"
+      ],
+      "packageImports": [],
+      "envKeys": [],
+      "dataFiles": [],
+      "hosts": [],
+      "secrets": [],
+      "lines": 55
+    },
+    {
+      "path": "scripts/check-sheet.ts",
+      "group": "scripts",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx scripts/check-sheet.ts",
+      "internalImports": [],
+      "packageImports": [
+        "dotenv",
+        "googleapis"
+      ],
+      "envKeys": [
+        "GOOGLE_PRIVATE_KEY",
+        "GOOGLE_SERVICE_ACCOUNT_EMAIL",
+        "GOOGLE_SHEET_ID"
+      ],
+      "dataFiles": [],
+      "hosts": [
+        "www.googleapis.com"
+      ],
+      "secrets": [],
+      "lines": 26
+    },
+    {
+      "path": "scripts/convert-review-images-to-webp.ts",
+      "group": "scripts",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx scripts/convert-review-images-to-webp.ts",
+      "internalImports": [],
+      "packageImports": [
+        "child_process",
+        "fs",
+        "os",
+        "path"
+      ],
+      "envKeys": [
+        "DRY_RUN",
+        "IMAGE_DIRS",
+        "MAX_SIZE",
+        "ONLY_NUMBERED",
+        "OVERWRITE",
+        "QUALITY",
+        "VERBOSE"
+      ],
+      "dataFiles": [],
+      "hosts": [],
+      "secrets": [],
+      "lines": 147
+    },
+    {
+      "path": "scripts/crawl-chundamon-reviews.ts",
+      "group": "scripts",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx scripts/crawl-chundamon-reviews.ts",
+      "internalImports": [],
+      "packageImports": [
+        "fs",
+        "path",
+        "playwright"
+      ],
+      "envKeys": [],
+      "dataFiles": [
+        "scripts/chundamon-reviews.json"
+      ],
+      "hosts": [
+        "chundamon.com"
+      ],
+      "secrets": [],
+      "lines": 238
+    },
+    {
+      "path": "scripts/crawl-qna-from-brand.ts",
+      "group": "scripts",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx scripts/crawl-qna-from-brand.ts",
+      "internalImports": [],
+      "packageImports": [
+        "fs",
+        "path",
+        "playwright"
+      ],
+      "envKeys": [],
+      "dataFiles": [
+        "scripts/qna-questions-list.json"
+      ],
+      "hosts": [
+        "brand.naver.com"
+      ],
+      "secrets": [],
+      "lines": 243
+    },
+    {
+      "path": "scripts/crawl-qna-questions.ts",
+      "group": "scripts",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx scripts/crawl-qna-questions.ts",
+      "internalImports": [],
+      "packageImports": [
+        "fs",
+        "path",
+        "playwright"
+      ],
+      "envKeys": [],
+      "dataFiles": [
+        "scripts/qna-questions-list.json"
+      ],
+      "hosts": [
+        "brand.naver.com"
+      ],
+      "secrets": [],
+      "lines": 202
+    },
+    {
+      "path": "scripts/export-mall-reviews.ts",
+      "group": "scripts",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx scripts/export-mall-reviews.ts",
+      "internalImports": [],
+      "packageImports": [
+        "dotenv",
+        "googleapis"
+      ],
+      "envKeys": [
+        "GOOGLE_PRIVATE_KEY",
+        "GOOGLE_SERVICE_ACCOUNT_EMAIL"
+      ],
+      "dataFiles": [],
+      "hosts": [
+        "www.googleapis.com"
+      ],
+      "secrets": [],
+      "lines": 90
+    },
+    {
+      "path": "scripts/export-reviews-batch.ts",
+      "group": "scripts",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx scripts/export-reviews-batch.ts",
+      "internalImports": [],
+      "packageImports": [
+        "dotenv",
+        "googleapis"
+      ],
+      "envKeys": [
+        "GOOGLE_PRIVATE_KEY",
+        "GOOGLE_SERVICE_ACCOUNT_EMAIL"
+      ],
+      "dataFiles": [],
+      "hosts": [
+        "www.googleapis.com"
+      ],
+      "secrets": [],
+      "lines": 130
+    },
+    {
+      "path": "scripts/export-reviews.ts",
+      "group": "scripts",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx scripts/export-reviews.ts",
+      "internalImports": [],
+      "packageImports": [
+        "dotenv",
+        "googleapis"
+      ],
+      "envKeys": [
+        "GOOGLE_PRIVATE_KEY",
+        "GOOGLE_SERVICE_ACCOUNT_EMAIL"
+      ],
+      "dataFiles": [],
+      "hosts": [
+        "www.googleapis.com"
+      ],
+      "secrets": [],
+      "lines": 258
+    },
+    {
+      "path": "scripts/generate-qna-replies.ts",
+      "group": "scripts",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx scripts/generate-qna-replies.ts",
+      "internalImports": [],
+      "packageImports": [
+        "fs"
+      ],
+      "envKeys": [],
+      "dataFiles": [
+        "scripts/qna-detail-list.json"
+      ],
+      "hosts": [],
+      "secrets": [],
+      "lines": 220
+    },
+    {
+      "path": "scripts/generate-qna.ts",
+      "group": "scripts",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx scripts/generate-qna.ts",
+      "internalImports": [],
+      "packageImports": [
+        "fs",
+        "path"
+      ],
+      "envKeys": [],
+      "dataFiles": [
+        "accounts/completed-accounts.json"
+      ],
+      "hosts": [],
+      "secrets": [],
+      "lines": 217
+    },
+    {
+      "path": "scripts/generate-reviews.ts",
+      "group": "scripts",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx scripts/generate-reviews.ts",
+      "internalImports": [],
+      "packageImports": [
+        "fs",
+        "path"
+      ],
+      "envKeys": [],
+      "dataFiles": [
+        "accounts/completed-accounts.json"
+      ],
+      "hosts": [],
+      "secrets": [],
+      "lines": 594
+    },
+    {
+      "path": "scripts/reconcile-review-index-by-name.ts",
+      "group": "scripts",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx scripts/reconcile-review-index-by-name.ts",
+      "internalImports": [
+        "../src/features/auth/lib/login-action",
+        "../src/features/join/lib/account-storage"
+      ],
+      "packageImports": [
+        "playwright"
+      ],
+      "envKeys": [
+        "HEADLESS",
+        "REVIEW_LIMIT",
+        "REVIEW_PAGE_LIMIT",
+        "TARGET_NAME_PREFIX"
+      ],
+      "dataFiles": [],
+      "hosts": [
+        "hanryeodamwon.com"
+      ],
+      "secrets": [],
+      "lines": 196
+    },
+    {
+      "path": "scripts/repo-parser/index.ts",
+      "group": "scripts",
+      "summary": "저장소 파서 추적 중인 파일을 훑어 실행 진입점, 기능 슬라이스, API 라우트, 환경변수, 하드코딩된 자격증명을 뽑아 문서와 기계 판독용 맵으로 만든다.",
+      "usage": [
+        "node scripts/repo-parser/index.ts                 # docs/REPOSITORY.md + docs/repo-map.json 생성",
+        "node scripts/repo-parser/index.ts --stdout        # 파일을 쓰지 않고 마크다운만 출력",
+        "node scripts/repo-parser/index.ts --check         # 자격증명이 남아 있으면 종료코드 1",
+        "node scripts/repo-parser/index.ts --json out.json # 출력 경로 지정"
+      ],
+      "runCommand": "pnpm tsx scripts/repo-parser/index.ts",
+      "internalImports": [
+        "build-repo-map",
+        "render-markdown"
+      ],
+      "packageImports": [
+        "node:fs",
+        "node:path"
+      ],
+      "envKeys": [],
+      "dataFiles": [
+        "docs/REPOSITORY.md",
+        "docs/repo-map.json"
+      ],
+      "hosts": [],
+      "secrets": [],
+      "lines": 71
+    },
+    {
+      "path": "scripts/run-review-scheduler.ts",
+      "group": "scripts",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx scripts/run-review-scheduler.ts",
+      "internalImports": [
+        "../src/features/auth/lib/login-action",
+        "../src/features/product/lib/visit-product-action",
+        "../src/features/review/lib/write-review-action",
+        "../src/types/automation"
+      ],
+      "packageImports": [
+        "fs",
+        "path",
+        "playwright"
+      ],
+      "envKeys": [],
+      "dataFiles": [
+        "accounts/completed-accounts.json"
+      ],
+      "hosts": [
+        "hanryeodamwon.com"
+      ],
+      "secrets": [],
+      "lines": 215
+    },
+    {
+      "path": "scripts/scan-all-qna.ts",
+      "group": "scripts",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx scripts/scan-all-qna.ts",
+      "internalImports": [
+        "../src/features/auth/lib/admin-login-action",
+        "../src/shared/config/credentials",
+        "../src/types/automation"
+      ],
+      "packageImports": [
+        "fs",
+        "playwright"
+      ],
+      "envKeys": [],
+      "dataFiles": [
+        "/Users/ganggyunggyu/Programing/21lab/hanryeo-bot/scripts/qna-scan-result.json"
+      ],
+      "hosts": [
+        "hanryeodamwon.cafe24.com"
+      ],
+      "secrets": [],
+      "lines": 105
+    },
+    {
+      "path": "scripts/scan-product-reviews.ts",
+      "group": "scripts",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx scripts/scan-product-reviews.ts",
+      "internalImports": [],
+      "packageImports": [
+        "fs",
+        "path",
+        "playwright"
+      ],
+      "envKeys": [],
+      "dataFiles": [
+        "accounts/completed-accounts.json",
+        "accounts/review-account-map.json"
+      ],
+      "hosts": [
+        "hanryeodamwon.com"
+      ],
+      "secrets": [],
+      "lines": 170
+    },
+    {
+      "path": "scripts/scan-qna-detail.ts",
+      "group": "scripts",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx scripts/scan-qna-detail.ts",
+      "internalImports": [
+        "../src/features/auth/lib/admin-login-action",
+        "../src/shared/config/credentials",
+        "../src/types/automation"
+      ],
+      "packageImports": [
+        "fs",
+        "playwright"
+      ],
+      "envKeys": [],
+      "dataFiles": [
+        "scripts/qna-detail-list.json"
+      ],
+      "hosts": [
+        "hanryeodamwon.cafe24.com"
+      ],
+      "secrets": [],
+      "lines": 121
+    },
+    {
+      "path": "scripts/scan-review-accounts.ts",
+      "group": "scripts",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx scripts/scan-review-accounts.ts",
+      "internalImports": [
+        "../src/features/auth/lib/login-action",
+        "../src/types/automation"
+      ],
+      "packageImports": [
+        "fs",
+        "path",
+        "playwright"
+      ],
+      "envKeys": [],
+      "dataFiles": [
+        "accounts/completed-accounts.json",
+        "accounts/review-account-map.json"
+      ],
+      "hosts": [
+        "hanryeodamwon.com"
+      ],
+      "secrets": [],
+      "lines": 248
+    },
+    {
+      "path": "scripts/scrape-news-board.ts",
+      "group": "scripts",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx scripts/scrape-news-board.ts",
+      "internalImports": [
+        "../src/features/auth/lib/admin-login-action",
+        "../src/shared/config/credentials",
+        "../src/types/automation"
+      ],
+      "packageImports": [
+        "playwright"
+      ],
+      "envKeys": [],
+      "dataFiles": [],
+      "hosts": [
+        "hanryeodamwon.cafe24.com"
+      ],
+      "secrets": [],
+      "lines": 87
+    },
+    {
+      "path": "scripts/scrape-news-full.ts",
+      "group": "scripts",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx scripts/scrape-news-full.ts",
+      "internalImports": [
+        "../src/features/auth/lib/admin-login-action",
+        "../src/shared/config/credentials",
+        "../src/types/automation"
+      ],
+      "packageImports": [
+        "playwright"
+      ],
+      "envKeys": [],
+      "dataFiles": [],
+      "hosts": [
+        "hanryeodamwon.cafe24.com"
+      ],
+      "secrets": [],
+      "lines": 36
+    },
+    {
+      "path": "scripts/scrape-product-images.ts",
+      "group": "scripts",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx scripts/scrape-product-images.ts",
+      "internalImports": [],
+      "packageImports": [
+        "fs",
+        "path",
+        "playwright"
+      ],
+      "envKeys": [],
+      "dataFiles": [],
+      "hosts": [
+        "hanryeodamwon.com"
+      ],
+      "secrets": [],
+      "lines": 46
+    },
+    {
+      "path": "scripts/setup-review-written-highlight.ts",
+      "group": "scripts",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx scripts/setup-review-written-highlight.ts",
+      "internalImports": [],
+      "packageImports": [
+        "dotenv",
+        "googleapis"
+      ],
+      "envKeys": [
+        "GOOGLE_PRIVATE_KEY",
+        "GOOGLE_SERVICE_ACCOUNT_EMAIL",
+        "GOOGLE_SHEET_ID"
+      ],
+      "dataFiles": [],
+      "hosts": [
+        "www.googleapis.com"
+      ],
+      "secrets": [],
+      "lines": 254
+    },
+    {
+      "path": "scripts/verify-review-images.ts",
+      "group": "scripts",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx scripts/verify-review-images.ts",
+      "internalImports": [],
+      "packageImports": [
+        "playwright"
+      ],
+      "envKeys": [],
+      "dataFiles": [],
+      "hosts": [
+        "hanryeodamwon.com"
+      ],
+      "secrets": [],
+      "lines": 103
+    },
+    {
+      "path": "update-sheet-addr.ts",
+      "group": "root",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx update-sheet-addr.ts",
+      "internalImports": [],
+      "packageImports": [
+        "dotenv",
+        "googleapis"
+      ],
+      "envKeys": [
+        "GOOGLE_PRIVATE_KEY",
+        "GOOGLE_SERVICE_ACCOUNT_EMAIL",
+        "GOOGLE_SHEET_ID"
+      ],
+      "dataFiles": [],
+      "hosts": [
+        "www.googleapis.com"
+      ],
+      "secrets": [],
+      "lines": 47
+    },
+    {
+      "path": "write-new-review.ts",
+      "group": "root",
+      "summary": "",
+      "usage": [],
+      "runCommand": "pnpm tsx write-new-review.ts",
+      "internalImports": [
+        "src/shared/config/credentials"
+      ],
+      "packageImports": [
+        "dotenv",
+        "playwright"
+      ],
+      "envKeys": [],
+      "dataFiles": [],
+      "hosts": [
+        "hanryeodamwon.com"
+      ],
+      "secrets": [],
+      "lines": 250
+    }
+  ],
+  "features": [
+    {
+      "name": "auth",
+      "segments": [
+        {
+          "name": "lib",
+          "files": [
+            "src/features/auth/lib/admin-login-action.ts",
+            "src/features/auth/lib/index.ts",
+            "src/features/auth/lib/login-action.ts"
+          ],
+          "exports": [
+            "adminLoginAction",
+            "loginAction"
+          ]
+        }
+      ],
+      "publicApi": [
+        "./lib"
+      ]
+    },
+    {
+      "name": "browser",
+      "segments": [
+        {
+          "name": "lib",
+          "files": [
+            "src/features/browser/lib/browser-manager.ts",
+            "src/features/browser/lib/index.ts"
+          ],
+          "exports": [
+            "endSession",
+            "startSession"
+          ]
+        }
+      ],
+      "publicApi": [
+        "./lib"
+      ]
+    },
+    {
+      "name": "join",
+      "segments": [
+        {
+          "name": "lib",
+          "files": [
+            "src/features/join/lib/account-storage.ts",
+            "src/features/join/lib/agree-action.ts",
+            "src/features/join/lib/data-generator.ts",
+            "src/features/join/lib/index.ts",
+            "src/features/join/lib/join-automation.ts",
+            "src/features/join/lib/join-form-action.ts"
+          ],
+          "exports": [
+            "ReviewRef",
+            "StoredAccount",
+            "agreeAction",
+            "findAccountIdByReviewNo",
+            "generateAccount",
+            "generateEmail",
+            "generateGender",
+            "generateId",
+            "generateName",
+            "generatePassword",
+            "generatePhone",
+            "getAccounts",
+            "getAccountsFilePath",
+            "getLatestReviewRefByAccountId",
+            "getReviewIndexFilePath",
+            "incrementPurchaseCount",
+            "incrementReviewCount",
+            "joinFormAction",
+            "runJoinAutomation",
+            "saveAccount",
+            "upsertReviewRef"
+          ]
+        },
+        {
+          "name": "ui",
+          "files": [
+            "src/features/join/ui/AccountTable.tsx",
+            "src/features/join/ui/JoinLogViewer.tsx",
+            "src/features/join/ui/JoinPanel.tsx",
+            "src/features/join/ui/index.ts"
+          ],
+          "exports": [
+            "AccountTable",
+            "JoinPanel",
+            "LogViewer"
+          ]
+        }
+      ],
+      "publicApi": [
+        "./lib",
+        "./ui"
+      ]
+    },
+    {
+      "name": "order",
+      "segments": [
+        {
+          "name": "lib",
+          "files": [
+            "src/features/order/lib/click-buy-action.ts",
+            "src/features/order/lib/index.ts",
+            "src/features/order/lib/place-order-action.ts"
+          ],
+          "exports": [
+            "clickBuyAction",
+            "placeOrderAction"
+          ]
+        }
+      ],
+      "publicApi": [
+        "./lib"
+      ]
+    },
+    {
+      "name": "pipeline",
+      "segments": [
+        {
+          "name": "hooks",
+          "files": [
+            "src/features/pipeline/hooks/index.ts",
+            "src/features/pipeline/hooks/useAccounts.ts",
+            "src/features/pipeline/hooks/usePipelineBuilder.ts",
+            "src/features/pipeline/hooks/usePipelineRunner.ts"
+          ],
+          "exports": [
+            "StoredAccount",
+            "filterAccountsBySteps",
+            "useAccounts",
+            "usePipelineBuilder",
+            "usePipelineRunner"
+          ]
+        },
+        {
+          "name": "lib",
+          "files": [
+            "src/features/pipeline/lib/index.ts",
+            "src/features/pipeline/lib/pipeline-config.ts",
+            "src/features/pipeline/lib/step-metadata.ts"
+          ],
+          "exports": [
+            "ALL_STEPS",
+            "PRESETS",
+            "PipelineRequirements",
+            "Preset",
+            "STEP_METADATA",
+            "StepId",
+            "StepMeta",
+            "calculateRequirements"
+          ]
+        },
+        {
+          "name": "ui",
+          "files": [
+            "src/features/pipeline/ui/AccountSelector.tsx",
+            "src/features/pipeline/ui/PipelineBuilder.tsx",
+            "src/features/pipeline/ui/PipelineSettings.tsx",
+            "src/features/pipeline/ui/StepChip.tsx",
+            "src/features/pipeline/ui/StepFlow.tsx",
+            "src/features/pipeline/ui/index.ts"
+          ],
+          "exports": [
+            "AccountSelector",
+            "PipelineBuilder",
+            "PipelineSettings",
+            "StepChip",
+            "StepFlow"
+          ]
+        }
+      ],
+      "publicApi": [
+        "./hooks",
+        "./lib",
+        "./ui"
+      ]
+    },
+    {
+      "name": "product",
+      "segments": [
+        {
+          "name": "lib",
+          "files": [
+            "src/features/product/lib/index.ts",
+            "src/features/product/lib/visit-product-action.ts"
+          ],
+          "exports": [
+            "visitProductAction"
+          ]
+        }
+      ],
+      "publicApi": [
+        "./lib"
+      ]
+    },
+    {
+      "name": "qna",
+      "segments": [
+        {
+          "name": "lib",
+          "files": [
+            "src/features/qna/lib/qna-reply-templates.ts",
+            "src/features/qna/lib/write-qna-action.ts",
+            "src/features/qna/lib/write-qna-reply-action.ts"
+          ],
+          "exports": [
+            "ReplyType",
+            "getReplyForQuestion",
+            "getReplyTypeForQuestion",
+            "writeQnaAction",
+            "writeQnaReplyAction"
+          ]
+        }
+      ],
+      "publicApi": []
+    },
+    {
+      "name": "review",
+      "segments": [
+        {
+          "name": "lib",
+          "files": [
+            "src/features/review/lib/index.ts",
+            "src/features/review/lib/write-review-action.ts"
+          ],
+          "exports": [
+            "writeReviewAction"
+          ]
+        }
+      ],
+      "publicApi": [
+        "./lib"
+      ]
+    }
+  ],
+  "apiRoutes": [
+    {
+      "route": "/api/accounts",
+      "path": "src/app/api/accounts/route.ts",
+      "methods": [
+        "GET"
+      ]
+    },
+    {
+      "route": "/api/join",
+      "path": "src/app/api/join/route.ts",
+      "methods": [
+        "GET"
+      ]
+    },
+    {
+      "route": "/api/pipeline",
+      "path": "src/app/api/pipeline/route.ts",
+      "methods": [
+        "POST"
+      ]
+    }
+  ],
+  "env": [
+    {
+      "key": "BATCH_SIZE",
+      "usedIn": [
+        "run-qna-batch.ts",
+        "run-review-batch.ts"
+      ]
+    },
+    {
+      "key": "CAFE24_MALL_ID",
+      "usedIn": [
+        "src/shared/config/credentials.ts"
+      ]
+    },
+    {
+      "key": "CAPTCHA_API_KEY",
+      "usedIn": [
+        "run-qna-batch.ts",
+        "run-qna-write-and-reply.ts"
+      ]
+    },
+    {
+      "key": "DRY_RUN",
+      "usedIn": [
+        "scripts/convert-review-images-to-webp.ts"
+      ]
+    },
+    {
+      "key": "GOOGLE_PRIVATE_KEY",
+      "usedIn": [
+        "check-qna-sheet.ts",
+        "check-sheet.ts",
+        "create-qna-tab.ts",
+        "read-sheet.ts",
+        "run-daily-pipeline.ts",
+        "run-purchase-and-sheet.ts",
+        "scripts/check-news-refs.ts",
+        "scripts/check-review-sheet.ts",
+        "scripts/check-sheet.ts",
+        "scripts/export-mall-reviews.ts",
+        "scripts/export-reviews-batch.ts",
+        "scripts/export-reviews.ts",
+        "scripts/setup-review-written-highlight.ts",
+        "update-sheet-addr.ts"
+      ]
+    },
+    {
+      "key": "GOOGLE_SERVICE_ACCOUNT_EMAIL",
+      "usedIn": [
+        "check-qna-sheet.ts",
+        "check-sheet.ts",
+        "create-qna-tab.ts",
+        "read-sheet.ts",
+        "run-daily-pipeline.ts",
+        "run-purchase-and-sheet.ts",
+        "scripts/check-news-refs.ts",
+        "scripts/check-review-sheet.ts",
+        "scripts/check-sheet.ts",
+        "scripts/export-mall-reviews.ts",
+        "scripts/export-reviews-batch.ts",
+        "scripts/export-reviews.ts",
+        "scripts/setup-review-written-highlight.ts",
+        "update-sheet-addr.ts"
+      ]
+    },
+    {
+      "key": "GOOGLE_SHEET_ID",
+      "usedIn": [
+        "check-sheet.ts",
+        "read-sheet.ts",
+        "run-daily-pipeline.ts",
+        "run-purchase-and-sheet.ts",
+        "scripts/check-sheet.ts",
+        "scripts/setup-review-written-highlight.ts",
+        "update-sheet-addr.ts"
+      ]
+    },
+    {
+      "key": "HEADLESS",
+      "usedIn": [
+        "run-batch-custom.ts",
+        "run-batch.ts",
+        "run-purchase-only.ts",
+        "run-qna-batch.ts",
+        "run-review-batch.ts",
+        "scripts/reconcile-review-index-by-name.ts",
+        "src/features/browser/lib/browser-manager.ts"
+      ]
+    },
+    {
+      "key": "IMAGE_DIRS",
+      "usedIn": [
+        "scripts/convert-review-images-to-webp.ts"
+      ]
+    },
+    {
+      "key": "MAX_DELAY",
+      "usedIn": [
+        "run-qna-batch.ts",
+        "run-review-batch.ts"
+      ]
+    },
+    {
+      "key": "MAX_SIZE",
+      "usedIn": [
+        "scripts/convert-review-images-to-webp.ts"
+      ]
+    },
+    {
+      "key": "MIN_DELAY",
+      "usedIn": [
+        "run-qna-batch.ts",
+        "run-review-batch.ts"
+      ]
+    },
+    {
+      "key": "ONLY_NUMBERED",
+      "usedIn": [
+        "scripts/convert-review-images-to-webp.ts"
+      ]
+    },
+    {
+      "key": "OVERWRITE",
+      "usedIn": [
+        "scripts/convert-review-images-to-webp.ts"
+      ]
+    },
+    {
+      "key": "PLAYWRIGHT_BROWSERS_PATH",
+      "usedIn": [
+        "scripts/check-setup/check-runtime.ts"
+      ]
+    },
+    {
+      "key": "QUALITY",
+      "usedIn": [
+        "scripts/convert-review-images-to-webp.ts"
+      ]
+    },
+    {
+      "key": "REVIEW_LIMIT",
+      "usedIn": [
+        "scripts/reconcile-review-index-by-name.ts"
+      ]
+    },
+    {
+      "key": "REVIEW_PAGE_LIMIT",
+      "usedIn": [
+        "scripts/reconcile-review-index-by-name.ts"
+      ]
+    },
+    {
+      "key": "TARGET_NAME_PREFIX",
+      "usedIn": [
+        "scripts/reconcile-review-index-by-name.ts"
+      ]
+    },
+    {
+      "key": "TARGET_SUCCESS",
+      "usedIn": [
+        "run-review-batch.ts"
+      ]
+    },
+    {
+      "key": "VERBOSE",
+      "usedIn": [
+        "scripts/convert-review-images-to-webp.ts"
+      ]
+    }
+  ],
+  "docs": [
+    "docs/REPOSITORY.md",
+    "docs/repo-map.json"
+  ],
+  "stats": {
+    "trackedFiles": 175,
+    "entrypoints": 44,
+    "features": 8,
+    "apiRoutes": 3,
+    "envKeys": 21,
+    "filesWithSecrets": 1,
+    "filesWithHighSeverity": 0
+  }
+}

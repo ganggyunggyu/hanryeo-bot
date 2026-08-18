@@ -1,0 +1,39 @@
+{
+  "name": "hanryeo-bot",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --port 5522",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "sheet:review-highlight": "node scripts/setup-review-written-highlight.ts",
+    "repo:parse": "node scripts/repo-parser/index.ts",
+    "repo:check": "node scripts/repo-parser/index.ts --check",
+    "setup:check": "node scripts/check-setup/index.ts",
+    "setup:ask": "node scripts/check-setup/index.ts --ask"
+  },
+  "dependencies": {
+    "2captcha-ts": "^2.4.1",
+    "clsx": "^2.1.1",
+    "dotenv": "^17.3.1",
+    "googleapis": "^171.4.0",
+    "next": "16.1.6",
+    "playwright": "^1.58.1",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "tailwind-merge": "^3.4.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.6",
+    "tailwindcss": "^4",
+    "tsx": "^4.23.12",
+    "typescript": "^5"
+  },
+  "type": "module"
+}
